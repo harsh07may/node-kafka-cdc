@@ -1,6 +1,6 @@
 import { generateUUID } from "@/common/utils";
 
-type User = {
+export type User = {
     id: string;
     name: string;
     isActive: boolean;
@@ -30,7 +30,7 @@ export async function getActiveUserById(id: string) {
     return USERS.find(u => u.id === id && u.isActive);
 }
 
-export async function createUser(
+export async function createNewUser(
     payload: Omit<User, "id" | "createdAt">
 ) {
     const user: User = {

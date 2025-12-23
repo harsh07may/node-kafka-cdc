@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAllActiveUsers, getActiveUserById } from "@/services/user.service";
+import { getAllActiveUsers, getActiveUserById, User, createNewUser } from "@/services/user.service";
 
 export async function getUsers(req: Request, res: Response) {
     try {
@@ -35,5 +35,20 @@ export async function getUser(req: Request, res: Response) {
         return res
             .status(500)
             .json({ success: false, message: "Failed to get user." });
+    }
+}
+
+export async function createUser(req: Request, res: Response) {
+    try {
+        const newUser = req.body as Omit<User, "id" | "createdAt">;
+        await createNewUser(newUser);
+
+        return res
+            .status(201)
+            .json({ success: true, message: "User created successfully." });
+    } catch {
+        return res
+            .status(500)
+            .json({ success: false, message: "Failed to create user." });
     }
 }
