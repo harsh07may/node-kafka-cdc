@@ -10,13 +10,13 @@ export type User = {
 
 const USERS: User[] = [
     {
-        id: "1",
+        id: "a0615ceb-9bec-4da9-859d-1ca07b2ca229",
         name: "user",
         isActive: true,
         createdAt: new Date(),
     },
     {
-        id: "2",
+        id: "a0615ceb-9bec-4da9-859d-1ca07b2ca329",
         name: "user2",
         isActive: true,
         createdAt: new Date(),
