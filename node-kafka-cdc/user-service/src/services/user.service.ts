@@ -1,3 +1,4 @@
+import { publishUserEvent } from "@/common/kafka";
 import { generateUUID } from "@/common/utils";
 
 export type User = {
@@ -40,6 +41,8 @@ export async function createNewUser(
     };
 
     USERS.push(user);
+    await publishUserEvent("USER_CREATED", user);
+
     return user;
 }
 
